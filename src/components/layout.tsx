@@ -31,7 +31,7 @@ const Layout = (props: any) => {
 
             <div className='bg-white flex-grow'>
                 <div className=''>
-                <Navbar />
+                    <Navbar />
                 </div>
 
                 <div className='bg-white bg-opacity-30 max-w-7xl py-8 px-4 sm:px-6 lg:px-8 rounded-lg pr-10'>

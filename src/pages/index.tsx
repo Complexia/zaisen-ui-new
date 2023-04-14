@@ -10,14 +10,15 @@ export default function Home() {
     <div className="flex flex-col items-center">
   
       <div className="w-full">
+        <span className="text-black font-bold">My NFTs</span>
         <IndexContainer>
-          <UpcomingPromotions /> 
+          <MyNFTs /> 
         </IndexContainer>
       </div>
   
       <div className="w-full">
         <IndexContainer>
-          <MyNFTs />
+          <UpcomingPromotions />
         </IndexContainer>
       </div>
   
