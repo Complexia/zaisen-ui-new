@@ -1,8 +1,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import MetamaskConnect from "./metamaskConnectButton";
 
 export default function Navbar() {
 	return (
-		<nav className="flex justify-between w-full pt-8 px-16 gap-8 mb-2 relative">
+		<nav className="flex-end justify-between w-full pt-8 px-16 gap-8 mb-2 relative">
 			<a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
 				{/* <img
 					className={styles.alchemy_logo}
@@ -10,7 +11,8 @@ export default function Navbar() {
 				></img> */}
 				
 			</a>
-			<ConnectButton></ConnectButton>
+            <div className="align-right"></div>
+            <MetamaskConnect />
 		</nav>
 	);
 }

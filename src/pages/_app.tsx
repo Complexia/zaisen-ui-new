@@ -2,6 +2,12 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import "@rainbow-me/rainbowkit/styles.css";
 
+
+import MetaMaskSDK from "@metamask/sdk";
+
+
+
+
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import {
