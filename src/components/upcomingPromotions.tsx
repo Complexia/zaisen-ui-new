@@ -17,6 +17,81 @@ const client = new ApolloClient({
     headers: { Authorization: AIRSTACK_API_KEY },
 })
 
+// input TokenNftFilter {
+//     address: # Contract address (ERC721, ERC1155)
+//     metaData: # allows querying by NFT Token Name, or specific trait or attribute.
+//     tokenId: # Unique NFT token ID
+//   }
+
+async function GetNFTDetails(address: string, cursor: string, limit: number): Promise<any> {
+
+    const query = gql`
+    query QB2 {
+        TokenNfts(input: {filter: {address: {_eq: "0x740e65d093db34a7ffbb144a2caff7489eb10ba4"}}, blockchain: ethereum}) {
+          TokenNft {
+            address
+            chainId
+            contentType
+            contentValue {
+              image {
+                extraSmall
+                original
+                large
+              }
+            }
+            #currentHolderCount - being fixed
+            id
+            lastTransferBlock
+            lastTransferHash
+            lastTransferTimestamp
+            metaData {
+              animationUrl
+              attributes {
+                trait_type
+                value
+              }
+              backgroundColor
+              description
+              image
+              externalUrl
+              imageData
+              name
+              youtubeUrl
+            }
+            rawMetaData
+            token {
+              id
+            }
+            tokenBalances {
+              id
+            }
+            tokenId
+            tokenURI
+            totalSupply
+            #transferCount - being fixed
+            type
+          }
+          pageInfo {
+            nextCursor
+            prevCursor
+          }
+        }
+      } 
+    `
+
+    const response = await client.query({
+        query,
+        variables: {
+            address: address,
+        },
+    })
+
+    console.log("nfts", response)
+
+    return response
+
+}
+
 async function GetAllNFTs(owners: string[], limit: number, cursor: string): Promise<any> {
     const query = gql`
         query MyQuery($cursor: String, $owners: [Identity!], $limit: Int) {
@@ -69,6 +144,7 @@ const fetchData = async (owners: any, limit: any, cursor: any) => {
 const UpcomingPromotions = () => {
 
     const [nftAddresses, setNftAddresses] = useState<any>([])
+    const [nftData, setNftData] = useState<any>([])
     const [loading, setLoading] = useState<boolean>(true);
 
     let owners = ["vitalik.eth"]
@@ -76,21 +152,44 @@ const UpcomingPromotions = () => {
     let limit = 10
     let cursor = ""
 
+    let nftCards: {
+        // Insert parameter values here
+        imageUrl: any; imageName: any; collectionName: string; contractAddress: any; description: any; tokenType: any;
+    }[] = [];
     useEffect(() => {
         async function fetchTokenData() {
             const tokenData = await fetchData(owners, limit, cursor);
-            console.log("hello")
-            console.log("1", tokenData.TokenBalances.TokenBalance)
+            
             setNftAddresses(tokenData.TokenBalances.TokenBalance);
-            console.log("2", nftAddresses);
+
+            
+            for (let i = 0; i < nftAddresses.length; i++) {
+                let nftDetails = await GetNFTDetails(nftAddresses[i].tokenAddress, cursor, limit);
+                let ipfsTag = nftDetails.data.TokenNfts.TokenNft[0].rawMetaData.image.split("//")[1];
+                let imageUrl = `https://ipfs.io/ipfs/${ipfsTag}`
+                let nftInfo= {
+                    // Insert parameter values here
+                    imageUrl: imageUrl,
+                    imageName: nftDetails.data.TokenNfts.TokenNft[0].metaData.name,
+                    collectionName: nftDetails.data.TokenNfts.TokenNft[0].metaData.name, 
+                    contractAddress: nftAddresses[i].tokenAddress,
+                    description: nftDetails.data.TokenNfts.TokenNft[0].rawMetaData.description,
+                    tokenType: nftAddresses[i].tokenType
+
+                }
+                nftCards.push(nftInfo);
+            }
+            
+            setNftData(nftCards);
             setLoading(false);
         }
         fetchTokenData();
 
-    }, []);
+    }, [loading]);
+    
     
 
-    if (nftAddresses.length == 0) {
+    if (nftData.length == 0) {
         return <div>Loading...</div>;
       }
 
@@ -103,16 +202,18 @@ const UpcomingPromotions = () => {
 
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
-            {nftAddresses.map((item: any, index: any) => {
+            {nftData.map((item: any, index: any) => {
                 let params = {
                     // Insert parameter values here
-                    imageUrl: "abc",
-                    imageName: "annsj",
-                    collectionName: "anj",
+                    imageUrl: item.imageUrl,
+                    imageName: item.imageName,
+                    collectionName: item.collectionName,
                     contractAddress: item.tokenAddress,
-                    description: "whowho",
+                    description: item.description,
                     tokenType: item.tokenType
                 };
+
+                
                 return (
                 <div key={index} className="bg-gray-100 p-4 rounded-lg">
                     <NftWindow props={params} />

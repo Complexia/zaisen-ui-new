@@ -7,29 +7,34 @@ import LatestSocials from '@/components/latestSocials'
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-between p-24 h-full">
-      <div className="flex flex-wrap justify-center h-full">
-
-        {/* <MyPromos> */}
+    <div className="flex flex-col items-center">
+  
+      <div className="w-full">
         <IndexContainer>
           <UpcomingPromotions /> 
         </IndexContainer>
-
-        {/* <MyNFTs> */}
+      </div>
+  
+      <div className="w-full">
         <IndexContainer>
           <MyNFTs />
         </IndexContainer>
-
-        {/* <HotPromos> */}
-        <IndexContainer>
-          <HotPromotions />
-        </IndexContainer>
-
-        {/* <LatestSocials> */}
-        <IndexContainer>
-          <LatestSocials />
-        </IndexContainer>
-
       </div>
-    </main>
+  
+      <div className="w-full flex flex-wrap justify-between">
+        <div className="w-1/2">
+          <IndexContainer>
+            <HotPromotions />
+          </IndexContainer>
+        </div>
+        <div className="w-1/2">
+          <IndexContainer>
+            <LatestSocials />
+          </IndexContainer>
+        </div>
+      </div>
+  
+    </div>
+  </main> 
   )
 }

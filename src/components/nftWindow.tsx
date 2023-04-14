@@ -1,5 +1,4 @@
 const NftWindow = (props: any) => {
-    console.log(props.props);
     return (
         <div className="bg-white rounded-lg p-4 text-black">
             <div className="flex items-center justify-center">
