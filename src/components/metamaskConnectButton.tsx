@@ -36,7 +36,7 @@ const MetamaskConnect = () => {
 
 
     return !isConnected ? (
-        <div className="ml-auto">
+        <div className="ml-auto py-4 pr-4">
           <div className="w-full mx-auto flex  justify-end mt-5">
             <button
               onClick={async () => {

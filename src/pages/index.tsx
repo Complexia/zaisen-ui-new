@@ -6,7 +6,7 @@ import LatestSocials from '@/components/latestSocials'
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between p-24 h-full">
+    <main className="flex flex-col items-center justify-between h-full">
     <div className="flex flex-col items-center">
   
       <div className="w-full">

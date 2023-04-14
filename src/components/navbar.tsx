@@ -3,7 +3,7 @@ import MetamaskConnect from "./metamaskConnectButton";
 
 export default function Navbar() {
 	return (
-		<nav className="flex top-0 justify-between w-full  py-4 pr-4 mr-auto gap-8 mb-2 relative">
+		<nav className="flex top-0 justify-between w-full  pr-4 mr-auto gap-8 relative">
 			<a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
 				{/* <img
 					className={styles.alchemy_logo}
