@@ -1,19 +1,15 @@
 // my promotions
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core"
 import { useEffect, useState } from "react";
+import NftWindow from "./nftWindow";
 
-import get_envs from '../../envs'
 
-const AIRSTACK_ENDPOINT = "https://api.airstack.xyz/gql"
-const AIRSTACK_API_KEY = "420e65342d4845ba9df353680e2ab28a"
+const AIRSTACK_ENDPOINT = process.env.AIRSTACK_ENDPOINT ? process.env.AIRSTACK_ENDPOINT : '';
+const AIRSTACK_API_KEY = process.env.AIRSTACK_API_KEY ? process.env.AIRSTACK_API_KEY : '';
 
-process.env.ALCHEMY_API_KEY
+let alchemy_key = process.env.ALCHEMY_API_KEY;
 
-const DB_HOST = process.env.DB_HOST;
 
-console.log("this one", DB_HOST);
-
-console.log("HELLO", AIRSTACK_ENDPOINT, AIRSTACK_API_KEY);
 // Initializing Client 🚀
 const client = new ApolloClient({
     uri: AIRSTACK_ENDPOINT,
@@ -102,18 +98,28 @@ const UpcomingPromotions = () => {
     // if (loading) {
     //     return <div>Loading...</div>;
     // }
-
+    
+    
 
     return (
-        <div className="overflow-scroll max-h-400">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {nftAddresses.map((item: any, index: any) => (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            {nftAddresses.map((item: any, index: any) => {
+                let params = {
+                    // Insert parameter values here
+                    imageUrl: "abc",
+                    imageName: "annsj",
+                    collectionName: "anj",
+                    contractAddress: item.tokenAddress,
+                    description: "whowho",
+                    tokenType: item.tokenType
+                };
+                return (
                 <div key={index} className="bg-gray-100 p-4 rounded-lg">
-                    {item.tokenAddress}
+                    <NftWindow props={params} />
                 </div>
-                ))}
-            </div>
-        </div>
+                );
+            })}
+        </div>  
     )
 }
 
