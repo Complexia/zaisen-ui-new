@@ -2,6 +2,7 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core"
 import { useEffect, useState } from "react";
 import NftWindow from "./nftWindow";
+import { useSelector } from "react-redux";
 
 
 const AIRSTACK_ENDPOINT = process.env.AIRSTACK_ENDPOINT ? process.env.AIRSTACK_ENDPOINT : '';
@@ -141,13 +142,19 @@ const fetchData = async (owners: any, limit: any, cursor: any) => {
 }
 
 
-const MyNFTs = () => {
+const MyNFTs = (props: any) => {
 
     const [nftAddresses, setNftAddresses] = useState<any>([])
     const [nftData, setNftData] = useState<any>([])
     const [loading, setLoading] = useState<boolean>(true);
 
-    let owners = ["vitalik.eth"]
+    
+
+    let account: any = useSelector((state: any) => state.account.account);
+
+    
+
+    let owners = [account]
 
     let limit = 10
     let cursor = ""
@@ -162,7 +169,9 @@ const MyNFTs = () => {
             
             setNftAddresses(tokenData.TokenBalances.TokenBalance);
 
-            
+            if (!nftAddresses) {
+                return;
+            }
             for (let i = 0; i < nftAddresses.length; i++) {
                 let nftDetails = await GetNFTDetails(nftAddresses[i].tokenAddress, cursor, limit);
                 let ipfsTag = nftDetails.data.TokenNfts.TokenNft[0].rawMetaData.image.split("//")[1];
@@ -179,19 +188,39 @@ const MyNFTs = () => {
                 }
                 nftCards.push(nftInfo);
             }
-            
             setNftData(nftCards);
             setLoading(false);
         }
-        fetchTokenData();
+        if (account && account != "") {
+            fetchTokenData();
+        }
 
-    }, [loading]);
+    }, [account]);
     
-    
+    if (!account || account == "") {
+        return (
+            <div>
+                <p>----------------------------------------------------------------------------------------------------------------------------</p>
+                <h1 className="text-black font-bold">No account connected chapy.</h1>
+            </div>
+        );
+    }
 
     if (nftData.length == 0) {
-        return <div>Loading...</div>;
-      }
+        return loading ?(
+            <div>
+                <p>----------------------------------------------------------------------------------------------------------------------------</p>
+                <h1 className="text-black font-bold">Loading...</h1>
+            </div>
+        ):(
+            <div>
+                <p>----------------------------------------------------------------------------------------------------------------------------</p>
+                <h1 className="text-black font-bold">No NFTs here mate...</h1>
+            </div>
+        );
+    }
+
+   
 
 
     // if (loading) {

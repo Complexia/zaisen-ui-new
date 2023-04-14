@@ -5,6 +5,13 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import MetaMaskSDK from "@metamask/sdk";
 
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from '../rootReducer';
+
+const store = configureStore({
+	reducer: rootReducer,
+});
 
 
 
@@ -59,16 +66,10 @@ export { WagmiConfig, RainbowKitProvider };
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-		<WagmiConfig client={wagmiClient}>
-			<RainbowKitProvider
-				modalSize="compact"
-				initialChain={polygon}
-				chains={chains}
-			>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</RainbowKitProvider>
-		</WagmiConfig>
+	<Provider store={store}>
+		<Layout>
+			<Component {...pageProps} />
+		</Layout>
+	</Provider>
 	);
 }
