@@ -19,6 +19,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import Layout from "../components/layout";
 
+
 const apiKey = process.env.ALCHEMY_API_KEY ? process.env.ALCHEMY_API_KEY : '';
 const { chains, provider } = configureChains(
 	[
@@ -36,7 +37,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-	appName: "My Alchemy DApp",
+	appName: "Zaisen App",
 	chains,
 });
 
@@ -55,7 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		<WagmiConfig client={wagmiClient}>
 			<RainbowKitProvider
 				modalSize="compact"
-				initialChain={polygonMumbai}
+				initialChain={polygon}
 				chains={chains}
 			>
 				<Layout>

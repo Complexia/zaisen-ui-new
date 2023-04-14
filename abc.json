@@ -1,0 +1,146 @@
+{
+    "data": {
+        "TokenBalances": {
+            "__typename": "TokenBalancesOutput",
+            "TokenBalance": [
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0xcc3cac6d9f77681cbff754377ad4599f5d8afd30",
+                    "amount": "1",
+                    "tokenType": "ERC721",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x2f9be39a424751b948faa0540551b23efbab5ac8",
+                    "amount": "1",
+                    "tokenType": "ERC721",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x30ee8d4b0225b6d841c0b0e023dcb139f79da6b0",
+                    "amount": "1",
+                    "tokenType": "ERC1155",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x65d531062f440d485beb01d8384cde4aa9c3d64d",
+                    "amount": "1",
+                    "tokenType": "ERC1155",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x0000000000664ceffed39244a8312bd895470803",
+                    "amount": "1",
+                    "tokenType": "ERC721",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+                    "amount": "1",
+                    "tokenType": "ERC1155",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "vitalik.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x298e7881bd9fd35d3b1d860701560364947c4e02",
+                    "amount": "1",
+                    "tokenType": "ERC721",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+                    "amount": "1",
+                    "tokenType": "ERC1155",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "vitalik.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x326b7a73624a08005614979c0852211c0bce15d6",
+                    "amount": "1",
+                    "tokenType": "ERC721",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "dwr.eth"
+                        }
+                    }
+                },
+                {
+                    "__typename": "TokenBalance",
+                    "tokenAddress": "0x5e981371cf185ffea4778c1c47f1ae29d4e27bd7",
+                    "amount": "1",
+                    "tokenType": "ERC721",
+                    "owner": {
+                        "__typename": "Wallet",
+                        "primaryDomain": {
+                            "__typename": "Domain",
+                            "name": "vitalik.eth"
+                        }
+                    }
+                }
+            ],
+            "pageInfo": {
+                "__typename": "PageInfo",
+                "prevCursor": "",
+                "nextCursor": "eyJMYXN0VmFsdWVzTWFwIjp7Il9pZCI6eyJWYWx1ZSI6IjEweDVlOTgxMzcxY2YxODVmZmVhNDc3OGMxYzQ3ZjFhZTI5ZDRlMjdiZDcweGQ4ZGE2YmYyNjk2NGFmOWQ3ZWVkOWUwM2U1MzQxNWQzN2FhOTYwNDUzMSIsIkRhdGFUeXBlIjoic3RyaW5nIn0sImxhc3RVcGRhdGVkVGltZXN0YW1wIjp7IlZhbHVlIjoiMTY4MTA2NTY4MyIsIkRhdGFUeXBlIjoiRGF0ZVRpbWUifX0sIlBhZ2luYXRpb25EaXJlY3Rpb24iOiJORVhUIn0="
+            }
+        }
+    },
+    "loading": false,
+    "networkStatus": 7
+}
