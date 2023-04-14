@@ -3,6 +3,8 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core"
 import { useEffect, useState } from "react";
 import NftWindow from "./nftWindow";
 import { useSelector } from "react-redux";
+import Link from "next/link";
+import router from "next/router";
 
 
 const AIRSTACK_ENDPOINT = process.env.AIRSTACK_ENDPOINT ? process.env.AIRSTACK_ENDPOINT : '';
@@ -152,9 +154,9 @@ const MyNFTs = (props: any) => {
 
     let account: any = useSelector((state: any) => state.account.account);
 
-    
-
-    let owners = [account]
+    //dummy nfts
+    let owners = ["vitalik.eth"]
+    //let owners = [account]
 
     let limit = 10
     let cursor = ""
@@ -195,8 +197,8 @@ const MyNFTs = (props: any) => {
             fetchTokenData();
         }
 
-    }, [account]);
-    
+    }, [account, loading]);
+
     if (!account || account == "") {
         return (
             <div>
@@ -232,24 +234,32 @@ const MyNFTs = (props: any) => {
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
             {nftData.map((item: any, index: any) => {
-                let params = {
-                    // Insert parameter values here
+                const params = {
                     imageUrl: item.imageUrl,
                     imageName: item.imageName,
                     collectionName: item.collectionName,
                     contractAddress: item.tokenAddress,
                     description: item.description,
-                    tokenType: item.tokenType
+                    tokenType: item.tokenType,
                 };
 
-                
+                const href = {
+                    pathname: '/nft-info',
+                    query: params,
+                    as: `/nft-info?${new URLSearchParams(params).toString()}`,
+                };
+
                 return (
                 <div key={index} className="bg-gray-100 p-4 rounded-lg">
-                    <NftWindow props={params} />
+                    <Link href={href}>
+                    <div className="cursor-pointer">
+                        <NftWindow props={params} />
+                    </div>
+                    </Link>
                 </div>
                 );
             })}
-        </div>  
+        </div>
     )
 }
 
