@@ -1,6 +1,9 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import "@rainbow-me/rainbowkit/styles.css";
+import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import MetaMaskSDK from "@metamask/sdk";
 
@@ -30,7 +33,7 @@ import { publicProvider } from "wagmi/providers/public";
 import Layout from "../components/layout";
 
 const apiKey = process.env.ALCHEMY_API_KEY ? process.env.ALCHEMY_API_KEY : "";
-const { chains, provider } = configureChains(
+const { chains, provider, webSocketProvider } = configureChains(
   [
     mainnet,
     goerli,
@@ -58,12 +61,27 @@ const wagmiClient = createClient({
 
 export { WagmiConfig, RainbowKitProvider };
 
+const client = createClient({
+  autoConnect: true,
+  provider,
+  webSocketProvider,
+});
+
+const desiredChainId = ChainId.Polygon;
+
+// Create a client
+const queryClient = new QueryClient();
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ThirdwebProvider activeChain={desiredChainId}>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
+      </ThirdwebProvider>
     </Provider>
   );
 }

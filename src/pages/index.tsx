@@ -43,8 +43,13 @@ export default function Home() {
   console.log(account);
 
   return (
-    <main className="flex flex-col items-center justify-between h-full">
+    <main className="flex flex-col items-center justify-between h-full ">
       <div className="flex flex-col items-center">
+        <div className="flex w-full justify-end">
+          <h1 className="hero w-5/6 bg-gradient-to-r from-purple-300 to-purple-500">
+            Create Promos. Claim Rewards. Grow Infinitely.
+          </h1>
+        </div>
         {!isVerified ? (
           <>
             <SismoConnectButton
@@ -104,7 +109,6 @@ export default function Home() {
           <div className="h-[20px]"></div>
           <MyNFTs props={(account = account)} />
         </div>
-
         {/* <div className="w-full">
           <span className="text-black font-bold">Upcoming promotions</span>
           <IndexContainer>
