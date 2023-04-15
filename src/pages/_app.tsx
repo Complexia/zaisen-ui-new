@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
-import Header from "../components/Header";
 import Layout from "../components/layout";
 import { Provider } from "react-redux";
 import rootReducer from "../rootReducer";

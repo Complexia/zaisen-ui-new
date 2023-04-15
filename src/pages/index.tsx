@@ -4,7 +4,7 @@ import MyNFTs from "../components/myNFTs";
 import HotPromotions from "../components/hotPromotions";
 import LatestSocials from "../components/latestSocials";
 import { useSelector } from "react-redux";
-import LensConnect from "../components/lensConnectButton";
+
 import {
   AuthType,
   SismoConnectButton,
