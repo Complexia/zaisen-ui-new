@@ -25,6 +25,10 @@ const PromotionForm = () => {
     setStep(step + 1);
   };
 
+  const handleBack = () => {
+    setStep(step - 1);
+  };
+
   const handleSearch = () => {
     console.log(params);
   };
@@ -91,11 +95,31 @@ const PromotionForm = () => {
   return (
     <div className="max-w-lg mx-auto mt-10 p-4 bg-white rounded-xl shadow-md">
       {renderStep()}
-      {step < 4 ? (
-        <button onClick={handleNext} className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-400">Next</button>
-      ) : (
-        <button onClick={handleSearch} className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-400">Submit</button>
-      )}
+      <div className="mt-4">
+        {step > 1 && (
+          <button
+            onClick={handleBack}
+            className="bg-gray-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          >
+            Back
+          </button>
+        )}
+        {step < 4 ? (
+          <button
+            onClick={handleNext}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          >
+            Next
+          </button>
+        ) : (
+          <button
+            onClick={handleSearch}
+            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-400"
+          >
+            Submit
+          </button>
+        )}
+      </div>
     </div>
   );
 };
