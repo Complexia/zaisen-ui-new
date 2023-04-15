@@ -1,4 +1,9 @@
 import { useState } from "react";
+import Image from 'next/image';
+
+
+
+import nofificationSvg from '../../public/notificationIcon.svg'
 
 const NotificationIcon = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -14,6 +19,14 @@ const NotificationIcon = () => {
         >
             {/* Notification Icon SVG */}
             
+            {/* <Image
+                priority
+                src='../../public/notificationIcon.svg'
+                height={32}
+                width={32}
+                alt="Notifications"
+            /> */}
+
             <svg fill="#BF40BF" height="24px" width="24px" version="1.1" id="Capa_1" viewBox="0 0 611.999 611.999" xmlns="http://www.w3.org/2000/svg"> 
                 <g>
                     <g>
@@ -36,6 +49,7 @@ const NotificationIcon = () => {
                     </g>
                 </g>
                 </svg>
+            
         </button>
       </div>
 

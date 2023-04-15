@@ -1,5 +1,58 @@
 // components/PromotionForm.tsx
 import { useState } from 'react';
+import { ethers } from 'ethers';
+import MetaMaskSDK from "@metamask/sdk";
+
+import { useSelector } from "react-redux";
+import { PromosMainABI } from '@/abis/promotionMainABI';
+
+
+
+
+// Define contract interface
+interface PromoContract {
+    yourContractFunction(name: string, description: string, numberOfClaims: number, sismoGroupId: string, transactionParameters: any): Promise<string>;
+  }
+  
+  // Set up provider and contract variables
+  const MMSDK = new MetaMaskSDK({
+        injectProvider: typeof window.ethereum !== "undefined",
+        //@ts-ignore
+        communicationLayerPreference: "webrtc",
+    });
+  
+  const ethereum = MMSDK.getProvider(); 
+
+  const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+  const contractABI = ['ABI_OF_YOUR_CONTRACT'];
+  const contract = new ethers.Contract(contractAddress, contractABI, ethereum) as unknown as PromoContract;
+  
+  // Define function to make contract call
+  const callFunction = async (from: any, to: any, ABI: any, functionName: any, _params: any, value: any) => {
+    const iface = new ethers.utils.Interface(ABI);
+    const data = iface.encodeFunctionData(functionName, _params);
+    const params = [
+      {
+        from,
+        to,
+        value,
+        data,
+      },
+    ];
+
+    try {
+        const result = await ethereum.request({ method: "eth_sendTransaction", params });
+        return result;
+      } catch (error) {
+        console.log("Failed");
+        console.log(error);
+        return error;
+      } 
+      
+  };
+
+
+
 
 interface Params {
   name: string;
@@ -9,6 +62,15 @@ interface Params {
 }
 
 const PromotionForm = () => {
+  let accountFrom: any = useSelector((state: any) => state.account.account);
+  let accountTo: any = "sdsd";
+  let abi: any = PromosMainABI();
+  let functionName = "createPromotion"
+
+  let _params = [44787, 3, "hsdh", "0x740e65d093db34a7ffbb144a2caff7489eb10ba4"];
+
+  let response = callFunction(accountFrom, accountTo, abi, functionName, _params, 12);
+  console.log(response)
   const [step, setStep] = useState(1);
   const [params, setParams] = useState<Params>({
     name: '',
@@ -29,8 +91,9 @@ const PromotionForm = () => {
     setStep(step - 1);
   };
 
-  const handleSearch = () => {
+  const handleSubmit = () => {
     console.log(params);
+    
   };
 
   const renderStep = () => {
@@ -113,7 +176,7 @@ const PromotionForm = () => {
           </button>
         ) : (
           <button
-            onClick={handleSearch}
+            onClick={handleSubmit}
             className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-400"
           >
             Submit
