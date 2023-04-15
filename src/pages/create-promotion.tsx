@@ -7,53 +7,6 @@ import { useSelector } from "react-redux";
 import { PromosMainABI } from '@/abis/promotionMainABI';
 
 
-
-
-// Define contract interface
-interface PromoContract {
-    yourContractFunction(name: string, description: string, numberOfClaims: number, sismoGroupId: string, transactionParameters: any): Promise<string>;
-  }
-  
-  // Set up provider and contract variables
-  const MMSDK = new MetaMaskSDK({
-        injectProvider: typeof window.ethereum !== "undefined",
-        //@ts-ignore
-        communicationLayerPreference: "webrtc",
-    });
-  
-  const ethereum = MMSDK.getProvider(); 
-
-  const contractAddress = 'YOUR_CONTRACT_ADDRESS';
-  const contractABI = ['ABI_OF_YOUR_CONTRACT'];
-  const contract = new ethers.Contract(contractAddress, contractABI, ethereum) as unknown as PromoContract;
-  
-  // Define function to make contract call
-  const callFunction = async (from: any, to: any, ABI: any, functionName: any, _params: any, value: any) => {
-    const iface = new ethers.utils.Interface(ABI);
-    const data = iface.encodeFunctionData(functionName, _params);
-    const params = [
-      {
-        from,
-        to,
-        value,
-        data,
-      },
-    ];
-
-    try {
-        const result = await ethereum.request({ method: "eth_sendTransaction", params });
-        return result;
-      } catch (error) {
-        console.log("Failed");
-        console.log(error);
-        return error;
-      } 
-      
-  };
-
-
-
-
 interface Params {
   name: string;
   description: string;
@@ -69,8 +22,8 @@ const PromotionForm = () => {
 
   let _params = [44787, 3, "hsdh", "0x740e65d093db34a7ffbb144a2caff7489eb10ba4"];
 
-  let response = callFunction(accountFrom, accountTo, abi, functionName, _params, 12);
-  console.log(response)
+  //let response = callFunction(accountFrom, accountTo, abi, functionName, _params, 12);
+  //console.log(response)
   const [step, setStep] = useState(1);
   const [params, setParams] = useState<Params>({
     name: '',
