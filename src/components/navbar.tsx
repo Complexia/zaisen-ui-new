@@ -1,6 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import MetamaskConnect from "./metamaskConnectButton";
 import LensConnect from "./lensConnectButton";
+import NotificationIcon from "./notificationIcon";
 
 export default function Navbar() {
 	return (
@@ -10,7 +11,10 @@ export default function Navbar() {
             </a>
             <div className="flex items-center">
                 <div className="pr-2">
-                <LensConnect />
+                    <NotificationIcon />
+                </div>
+                <div className="pr-2">
+                    <LensConnect />
                 </div>
                 <MetamaskConnect />
             </div>

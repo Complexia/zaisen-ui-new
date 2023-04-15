@@ -15,9 +15,13 @@ const accountSlice = createSlice({
     setAccount: (state, action: PayloadAction<string>) => {
       state.account = action.payload;
     },
+
+    setLensAccessToken: (state, action: PayloadAction<string>) => {
+        state.account = action.payload;
+      },
   },
 });
 
-export const { setAccount } = accountSlice.actions;
+export const { setAccount, setLensAccessToken } = accountSlice.actions;
 
 export default accountSlice.reducer;

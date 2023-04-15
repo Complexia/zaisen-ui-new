@@ -2,6 +2,8 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 'use client' 
 import { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
+import { useDispatch } from 'react-redux'
+import { setLensAccessToken } from '../store';
 
 const API_URL = 'https://api.lens.dev'
 
@@ -36,6 +38,8 @@ const authenticate = gql`
 
 const LensConnect = () => {
 
+
+    const dispatch = useDispatch();
 
     /* local state variables to hold user's address and access token */
     const [address, setAddress] = useState("")
@@ -94,6 +98,7 @@ const LensConnect = () => {
           const { data: { authenticate: { accessToken }}} = authData
           console.log({ accessToken })
           setToken(accessToken)
+          dispatch(setLensAccessToken(token));
         } catch (err) {
           console.log('Error signing in: ', err)
         }
@@ -124,7 +129,13 @@ const LensConnect = () => {
             }
             { /* once the user has authenticated, show them a success message */ }
             {
-                address && token && <h2>Successfully signed in!</h2>
+                address && token && (
+                    <div className="w-full mx-auto flex  justify-end mt-5">
+                        <button className="text-white bg-gradient-to-r from-green-500 to-green-700 text-lg rounded-lg p-3 disabled">
+                            {address.slice(0, 5) + "...." + address.slice(39)}
+                        </button>
+                    </div>
+                )
             }
         </div>
     )
