@@ -65,7 +65,7 @@ const MetamaskConnect = () => {
               onClick={async () => {
                 await connect();
               }}
-              className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 text-lg rounded-lg p-3 "
+              className="text-white bg-gradient-to-r from-orange-500 to-orange-700 text-lg rounded-lg p-3 "
             >
               Connect with Metamask
             </button>
@@ -74,7 +74,7 @@ const MetamaskConnect = () => {
       ) : (
         <div className="ml-auto py-4 pr-4">
           <div className="w-full mx-auto flex  justify-end mt-5">
-            <button className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 text-lg rounded-lg p-3 disabled">
+            <button className="text-white bg-gradient-to-r from-orange-500 to-orange-700 text-lg rounded-lg p-3 disabled">
               {accountAddress.slice(0, 5) + "...." + accountAddress.slice(39)}
             </button>
           </div>
