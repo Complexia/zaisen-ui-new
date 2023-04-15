@@ -127,7 +127,7 @@ const MyNFTs = (props: any) => {
         return (
             <div>
                 <p>----------------------------------------------------------------------------------------------------------------------------</p>
-                <h1 className="text-black font-bold">No account connected chapy.</h1>
+                <h1 className="text-black font-bold">No account connected chappy.</h1>
             </div>
         );
     }

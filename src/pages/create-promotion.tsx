@@ -5,14 +5,8 @@ import MetaMaskSDK from "@metamask/sdk";
 
 import { useSelector } from "react-redux";
 import { PromosMainABI } from '@/abis/promotionMainABI';
+import Link from 'next/link';
 
-
-interface Params {
-  name: string;
-  description: string;
-  numberOfClaims: string;
-  sismoGroupId: string;
-}
 
 const PromotionForm = () => {
   let accountFrom: any = useSelector((state: any) => state.account.account);
@@ -25,7 +19,7 @@ const PromotionForm = () => {
   //let response = callFunction(accountFrom, accountTo, abi, functionName, _params, 12);
   //console.log(response)
   const [step, setStep] = useState(1);
-  const [params, setParams] = useState<Params>({
+  const [params, setParams] = useState<any>({
     name: '',
     description: '',
     numberOfClaims: '',
@@ -128,12 +122,33 @@ const PromotionForm = () => {
             Next
           </button>
         ) : (
-          <button
-            onClick={handleSubmit}
-            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-400"
-          >
-            Submit
-          </button>
+
+        
+            //js object declare here
+            <>
+            {(() => {
+                
+
+                const href = {
+                    pathname: '/create-lens-post',
+                    query: params,
+                    as: `/create-lens-post?${new URLSearchParams(params).toString()}`,
+                };
+                
+                return (
+                    <Link href={href}>
+                        <button
+                            onClick={handleSubmit}
+                            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-400"
+                        >
+                            Submit
+                        </button>
+                    </Link>
+                );
+              })()}
+
+          
+          </>
         )}
       </div>
     </div>
