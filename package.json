@@ -15,6 +15,7 @@
     "@next/font": "13.0.7",
     "@rainbow-me/rainbowkit": "^0.12.8",
     "@reduxjs/toolkit": "^1.9.3",
+    "@sismo-core/sismo-connect-react": "^0.0.10",
     "@tanstack/react-query": "^4.20.4",
     "@thirdweb-dev/react": "^3.6.9-nightly-5862c55",
     "@thirdweb-dev/sdk": "^3.6.9-nightly-5862c55",

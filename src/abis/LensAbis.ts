@@ -27,14 +27,9 @@ const createPostABI = [  {    "inputs": [      {        "internalType": "uint256
 ];
 
 // 1. export the contract address
-<<<<<<< HEAD
 //testnet mumbai
 export const LENS_CONTRACT_ADDRESS =
   "0x60Ae865ee4C725cd04353b5AAb364553f56ceF82";
-=======
-export const LENS_CONTRACT_ADDRESS =
-  "0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d";
->>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
 
 // 2. export the contract abi
 export const LENS_CONTRACT_ABI = [
@@ -852,11 +847,7 @@ export const LENS_CONTRACT_ABI = [
             type: "tuple",
           },
         ],
-<<<<<<< HEAD
-        internalType: "struct DataTypes.PostData",
-=======
         internalType: "struct DataTypes.PostWithSigData",
->>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
         name: "vars",
         type: "tuple",
       },

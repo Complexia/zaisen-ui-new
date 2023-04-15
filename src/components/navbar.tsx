@@ -1,6 +1,7 @@
 import MetamaskConnect from "./metamaskConnectButton";
 import LensConnect from "./lensConnectButton";
 import NotificationIcon from "./notificationIcon";
+import SismoConnect from "./sismoConnectButton";
 
 export default function Navbar() {
 	return (
@@ -15,7 +16,9 @@ export default function Navbar() {
                 <div className="pr-2">
                     <LensConnect />
                 </div>
+                
                 <MetamaskConnect />
+                <SismoConnect />
             </div>
         </nav>
 	);
