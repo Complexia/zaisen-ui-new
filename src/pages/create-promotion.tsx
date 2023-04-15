@@ -1,5 +1,6 @@
 // components/PromotionForm.tsx
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 interface Params {
@@ -7,16 +8,28 @@ interface Params {
   description: string;
   numberOfClaims: string;
   content: string;
+  contractAddress: string;
 }
 
 const PromotionForm = () => {
   const [step, setStep] = useState(1);
+  const router = useRouter();
+  const { contractAddress } = router.query;
   const [params, setParams] = useState<Params>({
     name: '',
     description: '',
     numberOfClaims: '',
     content: '',
+    contractAddress: '',
   });
+
+
+
+
+
+
+  params.contractAddress = contractAddress ? contractAddress.toString() : '';
+  console.log(contractAddress);
 
   const handleInputChange = (e: any) => {
     setParams({ ...params, [e.target.name]: e.target.value });

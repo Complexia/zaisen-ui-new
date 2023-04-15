@@ -12,11 +12,11 @@ export default function CreatePromotion() {
   const [contractAddress, setContractAddress] = useState("");
   const [thresholdCount, setThresholdCount] = useState("");
   const [gmail, setGmail] = useState("");
-  const handleSubmitCrossChain = (e) => {
+  const handleSubmitCrossChain = (e: any) => {
     e.preventDefault();
     // TODO: submit form data
   };
-  const handleSubmitNativeChain = (e) => {
+  const handleSubmitNativeChain = (e: any) => {
     e.preventDefault();
     // TODO: submit form data
   };

@@ -47,7 +47,8 @@ const CreateLensPost = () => {
                     contractAbi={LENS_CONTRACT_ABI}
                     action={async () => {
                       
-
+                      let content = `GM Tokyo! I have just created a promo that goes by the name of ${name}, for NFT #${contractAddress} on the Zaisan. You get ${numberOfClaims} claims. Check it out here: https://zaisan.io/promo/${name}
+                        Basic description: ${description}`;
                       return await createPost({
                         title: name,
                         description,

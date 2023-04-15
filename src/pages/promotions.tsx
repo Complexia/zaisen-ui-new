@@ -149,7 +149,8 @@ const SearchBox = () => {
             })()}
             </div>
             <div className="pb-2 mb-2">
-                <Link href="/create-promotion">
+                
+                <Link href={{pathname: '/create-promotion', query: { contractAddress: searchTerm } }} shallow>
                     <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                         Create Promo
                     </button>

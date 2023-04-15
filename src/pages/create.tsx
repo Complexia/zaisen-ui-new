@@ -6,6 +6,7 @@ import styles from "../styles/Create.module.css";
 
 export default function Create() {
   const [image, setImage] = useState<File | null>(null);
+
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [content, setContent] = useState<string>("");
