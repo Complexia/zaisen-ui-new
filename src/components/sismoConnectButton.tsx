@@ -37,7 +37,8 @@ const SismoConnect = () => {
     };
 
     return (
-        <div className="ml-auto py-4">
+        <div className="ml-auto py-4 pr-4">
+          <div className="w-full mx-auto flex  justify-end mt-4">
             {!isVerified ? (
                 <>
                     <SismoConnectButton
@@ -53,6 +54,7 @@ const SismoConnect = () => {
                 ) : (
                 "Response verified!"
             )}
+        </div>
         </div>
     )
 }

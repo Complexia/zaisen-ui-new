@@ -43,63 +43,36 @@ export default function Home() {
   console.log(account);
 
   return (
-    <main className="flex flex-col items-center justify-between h-full ">
-      <div className="flex flex-col items-center">
-        <div className="flex w-full justify-end">
-          <h1 className="hero w-5/6 bg-gradient-to-r from-purple-300 to-purple-500">
-            Create Promos. Claim Rewards. Grow Infinitely.
-          </h1>
-        </div>
-        {!isVerified ? (
-          <>
-            <SismoConnectButton
-              config={sismoConnectConfig}
-              auths={[{ authType: AuthType.VAULT }]}
-              onResponse={(response: SismoConnectResponse) => verify(response)}
-              verifying={verifying}
-              callbackPath={"/"}
-              overrideStyle={{ marginBottom: 10 }}
-            />
-            <>{error}</>
-          </>
-        ) : (
-          "Response verified!"
-        )}
-        <div className="w-screen">
-          <div className="h-[10px]"></div>
-          <div className="flex justify-center ml-[200px] z-30">
-            <p className="text-white bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 rounded-md  inline font-bold text-2xl mt-6 mb-12">
-              For You
-            </p>
-          </div>
 
-          <div className="h-[20px]"></div>
-          <MyNFTs props={(account = account)} />
-        </div>
-        
-        
-        {/* <div className="w-full">
-          <span className="text-black font-bold">Upcoming promotions</span>
-          <IndexContainer>
-            <UpcomingPromotions />
-          </IndexContainer>
-        </div>
-
-        <div className="w-full flex flex-wrap justify-between">
-          <div className="w-1/2">
-            <span className="text-black font-bold">Hot promos</span>
+        <main className="flex flex-col items-center justify-between min-h-screen min-w-max w-full mt-[60px] ">
+          <div className="w-full">
+            <span className="text-black font-bold">My NFTs</span>
             <IndexContainer>
-              <HotPromotions />
+              <MyNFTs />
             </IndexContainer>
           </div>
-          <div className="w-1/2">
-            <span className="text-black font-bold">Latest socials</span>
+
+          <div className="w-full">
+            <span className="text-black font-bold">Upcoming promotions</span>
             <IndexContainer>
-              <LatestSocials />
+              <UpcomingPromotions />
             </IndexContainer>
-          </div> */}
-        {/* </div> */}
-      </div>
-    </main>
+          </div>
+
+          <div className="w-full flex flex-wrap justify-between">
+            <div className="w-1/2">
+              <span className="text-black font-bold">Hot promos</span>
+              <IndexContainer>
+                <HotPromotions />
+              </IndexContainer>
+            </div>
+            <div className="w-1/2">
+              <span className="text-black font-bold">Latest socials</span>
+              <IndexContainer>
+                <LatestSocials />
+              </IndexContainer>
+            </div>
+          </div>
+        </main>
   );
 }
