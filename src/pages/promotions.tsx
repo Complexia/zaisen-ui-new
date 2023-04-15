@@ -1,20 +1,12 @@
 import { useState } from 'react';
 import { getNFTDetails, getAllNftsOfAddress } from '../graphql/queries';
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core"
-<<<<<<< HEAD
 import NftWindow from '../components/nftWindow';
-=======
-import NftWindow from '@/components/nftWindow';
->>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
 import Link from 'next/link';
 
 const AIRSTACK_ENDPOINT = process.env.AIRSTACK_ENDPOINT ? process.env.AIRSTACK_ENDPOINT : '';
 const AIRSTACK_API_KEY = process.env.AIRSTACK_API_KEY ? process.env.AIRSTACK_API_KEY : '';
 
-<<<<<<< HEAD
-console.log("hello", AIRSTACK_ENDPOINT);
-=======
->>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
 
 // Initializing Client 🚀
 const client = new ApolloClient({
@@ -50,7 +42,7 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-screen">
         <label className="text-black mb-1">
         Search specific NFT, collection, or select from popular ones
         </label>

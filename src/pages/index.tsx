@@ -76,39 +76,8 @@ export default function Home() {
           <div className="h-[20px]"></div>
           <MyNFTs props={(account = account)} />
         </div>
-        <div className="w-screen">
-          <div className="h-[10px]"></div>
-          <div className="flex justify-center ml-[200px] z-30">
-            <p className="text-white bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 rounded-md  inline font-bold text-2xl mt-6 mb-12">
-              For You
-            </p>
-          </div>
-
-          <div className="h-[20px]"></div>
-          <MyNFTs props={(account = account)} />
-        </div>
-        <div className="w-screen">
-          <div className="h-[10px]"></div>
-          <div className="flex justify-center ml-[200px] z-30">
-            <p className="text-white bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 rounded-md  inline font-bold text-2xl mt-6 mb-12">
-              For You
-            </p>
-          </div>
-
-          <div className="h-[20px]"></div>
-          <MyNFTs props={(account = account)} />
-        </div>
-        <div className="w-screen">
-          <div className="h-[10px]"></div>
-          <div className="flex justify-center ml-[200px] z-30">
-            <p className="text-white bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 rounded-md  inline font-bold text-2xl mt-6 mb-12">
-              For You
-            </p>
-          </div>
-
-          <div className="h-[20px]"></div>
-          <MyNFTs props={(account = account)} />
-        </div>
+        
+        
         {/* <div className="w-full">
           <span className="text-black font-bold">Upcoming promotions</span>
           <IndexContainer>
