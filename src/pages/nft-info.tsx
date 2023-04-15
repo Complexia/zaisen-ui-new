@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import NftWindow from '../components/nftWindow';
+=======
+import NftWindow from '@/components/nftWindow';
+>>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
 import { useRouter } from 'next/router';
 
 const NftInfo = () => {

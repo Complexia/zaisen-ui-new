@@ -5,8 +5,12 @@ import { ethers } from 'ethers'
 import { useDispatch } from 'react-redux'
 import { setLensAccessToken } from '../store';
 
+<<<<<<< HEAD
 //const API_URL = 'https://api.lens.dev'
 const API_URL = "https://api-mumbai.lens.dev"
+=======
+const API_URL = 'https://api.lens.dev'
+>>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
 
 const client = new ApolloClient({
   uri: API_URL,

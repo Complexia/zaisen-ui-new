@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { isTokenExpired, readAccessToken } from "../lib/auth/helpers";
 import refreshAccessToken from "../lib/auth/refreshAccessToken";
+=======
+import { isTokenExpired, readAccessToken } from "../auth/helpers";
+import refreshAccessToken from  "../auth/refreshAccessToken"
+>>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
 
 export const fetcher = <TData, TVariables>(
   query: string,
@@ -30,7 +35,11 @@ export const fetcher = <TData, TVariables>(
   return async () => {
     const token = typeof window !== "undefined" ? await getAccessToken() : null;
 
+<<<<<<< HEAD
     const res = await fetch("https://api-mumbai.lens.dev", {
+=======
+    const res = await fetch("https://api.lens.dev/", {
+>>>>>>> 7979da1637032d8fefe095e43e353256fde0f6ea
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["via.placeholder.com", "example.com"],
+  },
   reactStrictMode: true,
-
   env: {
     ALCHEMY_API_KEY: process.env.ALCHEMY_API_KEY,
     ALCHEMY_NETWORK: process.env.ALCHEMY_NETWORK,
@@ -12,7 +14,7 @@ const nextConfig = {
     AIRSTACK_API_KEY: process.env.AIRSTACK_API_KEY,
     AIRSTACK_ENDPOINT: process.env.AIRSTACK_ENDPOINT,
   },
+  
+};
 
-}
-
-module.exports = nextConfig
+module.exports = nextConfig;
