@@ -1,3 +1,2 @@
-# Lens Protocol - The ULTIMATE Guide 🌿
+## Keep calm and love Tokyo`
 
-Source code for the [Ultimate Guide to Lens Protocol video](https://youtu.be/e1mPmDRUUBc).
